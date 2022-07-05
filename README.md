@@ -8,7 +8,7 @@ The checker detects the following concurrency (multi-threading) issues with a st
 
 * **Data Races**: Unsynchronized concurrent accesses to same variable or array element, involving at least a write.
 * **Deadlocks**: Constellations in which multiple threads block each other cyclically forever.
-* **Thread-unsafe usage**: Unsynchronized concurrent calls or accesses of application programming interfaces that are not specified to be thread safe.
+* **Thread-Unsafe Usage**: Unsynchronized concurrent calls or accesses of application programming interfaces that are not specified to be thread safe.
 
 The abovementioned issues are all fundamental programming bugs that can lead to program errors. These issues occur non-deterministically, possibly sporadically or very seldom. They are therefore hard to identify in tests and are not easily reproducible. For this reason, it makes sense to use a static analysis that examines various program traces, including very specific or seldom cases, as to whether they suffer from such issues.
 
