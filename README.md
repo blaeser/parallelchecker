@@ -51,6 +51,7 @@ The following screenshot shows a detected data race issue for a C# code in Visua
 ![Screenshot of a data race identified by the parallel checker](https://user-images.githubusercontent.com/108720770/177280283-8aacdbc4-7f37-4c37-b47b-6022f9e05f79.png)
 
 More examples are contained in the samples section.
+
 ---
 
 **Notice**: Microsoft, Visual Studio, and Visual Basic are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries.
