@@ -26,7 +26,7 @@ The checker engages a new algorithm that has been designed to efficiently deal w
 
 More technical information on the checker algorithm and design can be found in the following academic publication (open access):
 
-* L. Bläser. Practical Detection of Concurrency Issues at Coding Time. International Symposium on Software Testing and Analysis (ISSTA) 2018, Amsterdam, The Netherlands, In ACM Digital Library, July 2018.
+* L. Bläser. *Practical Detection of Concurrency Issues at Coding Time*. International Symposium on Software Testing and Analysis (ISSTA) 2018, Amsterdam, The Netherlands, In ACM Digital Library, July 2018.
 
 ## Scope
 
@@ -52,7 +52,7 @@ More examples are contained in the samples section.
 
 Screenshot of a data race identified by the parallel checker
 
---
+---
 
 **Notice**: Microsoft, Visual Studio, and Visual Basic are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries.
 
