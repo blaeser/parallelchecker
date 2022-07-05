@@ -48,10 +48,9 @@ Certain limitations apply, please see the download section for more details.
 
 The following screenshot shows a detected data race issue for a C# code in Visual Studio: The two methods `Deposit()` and `Withdraw()` are concurrently invoked on the same instance of `BankAccount`. The checker has verified that there indeed exist multiple threads that concurrently call `Deposit()`/`Withdraw()` on the same instance. There is no mutual lock exclusion between these two method executions, as only `Withdraw()` establishes a monitor lock on `_sync`. Thus, unsynchronized concurrent read/write, write/read and write/write accesses are effected by the corresponding method bodies.
 
+![Screenshot of a data race identified by the parallel checker](https://user-images.githubusercontent.com/108720770/177280283-8aacdbc4-7f37-4c37-b47b-6022f9e05f79.png)
+
 More examples are contained in the samples section.
-
-Screenshot of a data race identified by the parallel checker
-
 ---
 
 **Notice**: Microsoft, Visual Studio, and Visual Basic are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries.
