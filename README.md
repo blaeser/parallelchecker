@@ -28,9 +28,9 @@ To use the Parallel Checker in VS Code, you need to integrate its NuGet analyzer
 
 The checker detects the following concurrency (multi-threading) issues with a static analysis:
 
-* **Data Races**: Unsynchronized concurrent accesses to same variable or array element, involving at least a write.
-* **Deadlocks**: Constellations in which multiple threads block each other cyclically forever.
-* **Thread-Unsafe Usage**: Unsynchronized concurrent calls or accesses of application programming interfaces that are not specified to be thread safe.
+* **[Data Races](https://github.com/blaeser/parallelchecker/blob/main/doc/DataRace.md)**: Unsynchronized concurrent accesses to same variable or array element, involving at least a write.
+* **[Deadlocks](https://github.com/blaeser/parallelchecker/blob/main/doc/Deadlock.md)**: Constellations in which multiple threads block each other cyclically forever.
+* **[Thread-Unsafe Usage](https://github.com/blaeser/parallelchecker/blob/main/doc/ThreadUnsafeUsage.md)**: Unsynchronized concurrent calls or accesses of application programming interfaces that are not specified to be thread safe.
 
 The abovementioned issues are all fundamental programming bugs that can lead to program errors. These issues occur non-deterministically, possibly sporadically or very seldom. They are therefore hard to identify in tests and are not easily reproducible. For this reason, it makes sense to use a static analysis that examines various program traces, including very specific or seldom cases, as to whether they suffer from such issues.
 
