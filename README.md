@@ -1,6 +1,28 @@
 # Parallel Checker
 
-The Parallel Checker is a static analysis tool that detects data races, deadlocks, and other concurrency issues in C#. The checker is available as a NuGet package (e.g. for Visual Studio Code) and as a Visual Studio extension.
+The Parallel Checker (formerly also called "HSR Parallel Checker") is a static analyzer for Visual Studio® and VS Code that detects data races, deadlocks, and other concurrency issues in C#.
+
+## Highlights
+
+* **Static**: Finds issues that are hard to identify through tests.
+* **Fast**: Takes only a few seconds, even for large projects.
+* **Precise**: Detects real issues that can occur indeed at runtime.
+* **Interactive**: Highlights issues while coding in Visual Studio® or VS Code IDE.
+
+## Installation
+
+### Visual Studio® Extension
+You can find the Parallel Checker as a Visual Studio® extension in the Visual Studio® Marketplace:
+
+* [Parallel Checker Extension for Visual Studio® 2022](https://marketplace.visualstudio.com/items?itemName=LBHSR.ParallelChecker) (most recent release, >1,000 installs).
+* [Parallel Checker Extension for Visual Studio® 2019](https://marketplace.visualstudio.com/items?itemName=LBHSR.HSRParallelCheckerforC7VS2017) (previous version, >2,700 installs).
+
+### NuGet Package (for e.g. VS Code)
+To use the Parallel Checker in VS Code, you need to integrate its NuGet analyzer package in your C# project. 
+
+* [Parallel Checker NuGet Package](https://www.nuget.org/packages/ConcurrencyLab.ParallelChecker/) (>3,300 downloads) 
+
+**Total Downloads/Installs: >7,000** (July 2022)
 
 ## Concurrency Issues
 
