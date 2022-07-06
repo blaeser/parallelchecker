@@ -8,12 +8,12 @@ For Visual Studio® 2022: The issues are automatically displayed if the checker 
 
 For VS Code: You need to add the NuGet package "ConcurrencyLab.ParallChecker" to all projects to enable the detection.
 
-* **BankTest** Download (157KB)
-* **Deadlocks** Download (190KB)
-* **Quicksort** Download (165KB)
-* **Double-Checked Locking** Download (187KB)
-* **Finalizer** Download (153KB)
-* **Prime Checker UI** Download (216KB)
+* **[BankTest](1_BankTest)** Download (157KB)
+* **[Deadlocks](2_Deadlocks)** Download (190KB)
+* **[Quicksort](3_QuickSort)** Download (165KB)
+* **[Double-Checked Locking](4_DoubleCheckedLocking)** Download (187KB)
+* **[Finalizer](5_Finalizer)** Download (153KB)
+* **[Prime Checker UI](6_PrimeCheckerUI)** Download (216KB)
 
 The checker has also been applied on various large open-source projects, e.g. Roslyn, Mono etc.
 
