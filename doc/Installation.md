@@ -13,7 +13,7 @@ This is the simplest way to install the latest version.
 
 ### Prerequisites:
 
-    Visual Studio® 2022 (Version 17.2.0 or higher)
+* Visual Studio® 2022 (Version 17.2.0 or higher)
 
 ### Notes:
 

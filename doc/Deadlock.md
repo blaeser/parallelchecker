@@ -64,7 +64,7 @@ The following schedule eventually leads to a deadlock:
 
 The following diagram depicts the deadlock situation. Each thread holds a lock and awaits the lock that is acquired by the other thread.
 
-Deadlock cycle
+![Deadlock cycle](https://user-images.githubusercontent.com/108720770/177519873-c244ba9d-5c4d-469f-8278-007fd0b96f5f.png)
 
 ## Correction
 
