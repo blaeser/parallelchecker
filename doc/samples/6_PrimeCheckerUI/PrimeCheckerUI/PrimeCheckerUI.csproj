@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <PackageId>PrimeCheckerUI Sample Parallel Checker</PackageId>
+    <Authors>Prof. Dr. Luc Bläser</Authors>
+    <Company>Concurrency Lab, OST - Ostschweizer Fachhochschule</Company>
+    <Product>Parallel Checker Samples</Product>
+  </PropertyGroup>
+
+</Project>

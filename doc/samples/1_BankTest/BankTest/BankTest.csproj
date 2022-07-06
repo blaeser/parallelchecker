@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <PackageId>BankTest Sample for Parallel Checker</PackageId>
+    <Authors>Prof. Dr. Luc Bläser</Authors>
+    <Company>Concurrency Lab, OST - Ostschweizer Fachhochschule</Company>
+    <Product>Parallel Checker Samples</Product>
+  </PropertyGroup>
+
+</Project>
