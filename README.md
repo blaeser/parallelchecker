@@ -11,20 +11,20 @@ The Parallel Checker (formerly also called "HSR Parallel Checker") is a static a
 
 ## Installation
 
+**Total Downloads/Installs: >7,000** (July 2022)
+
+More details can found at [installation instructions](https://github.com/blaeser/parallelchecker/blob/main/doc/Installation.md).
+
 ### Visual Studio® Extension
 You can find the Parallel Checker as a Visual Studio® extension in the Visual Studio® Marketplace:
 
 * [Parallel Checker Extension for Visual Studio® 2022](https://marketplace.visualstudio.com/items?itemName=LBHSR.ParallelChecker) (most recent release, >1,000 installs).
 * [Parallel Checker Extension for Visual Studio® 2019](https://marketplace.visualstudio.com/items?itemName=LBHSR.HSRParallelCheckerforC7VS2017) (previous version, >2,700 installs).
 
-More information can be found under the [installation instructions](https://github.com/blaeser/parallelchecker/blob/main/doc/Installation.md).
-
 ### NuGet Package (for e.g. VS Code)
 To use the Parallel Checker in VS Code, you need to integrate its NuGet analyzer package in your C# project. 
 
 * [Parallel Checker NuGet Package](https://www.nuget.org/packages/ConcurrencyLab.ParallelChecker/) (>3,300 downloads) 
-
-**Total Downloads/Installs: >7,000** (July 2022)
 
 ## Concurrency Issues
 
