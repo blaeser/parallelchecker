@@ -13,7 +13,7 @@ The Parallel Checker (formerly also called "HSR Parallel Checker") is a static a
 
 **Total Downloads/Installs: >7,000** (July 2022)
 
-More details can found at [installation instructions](https://github.com/blaeser/parallelchecker/blob/main/doc/Installation.md).
+More details can found under [installation instructions](doc/Installation.md).
 
 ### Visual Studio® Extension
 You can find the Parallel Checker as a Visual Studio® extension in the Visual Studio® Marketplace:
@@ -30,9 +30,9 @@ To use the Parallel Checker in VS Code, you need to integrate its NuGet analyzer
 
 The checker detects the following concurrency (multi-threading) issues with a static analysis:
 
-* **[Data Races](https://github.com/blaeser/parallelchecker/blob/main/doc/DataRace.md)**: Unsynchronized concurrent accesses to same variable or array element, involving at least a write.
-* **[Deadlocks](https://github.com/blaeser/parallelchecker/blob/main/doc/Deadlock.md)**: Constellations in which multiple threads block each other cyclically forever.
-* **[Thread-Unsafe Usage](https://github.com/blaeser/parallelchecker/blob/main/doc/ThreadUnsafeUsage.md)**: Unsynchronized concurrent calls or accesses of application programming interfaces that are not specified to be thread safe.
+* **[Data Races](doc/DataRace.md)**: Unsynchronized concurrent accesses to same variable or array element, involving at least a write.
+* **[Deadlocks](doc/Deadlock.md)**: Constellations in which multiple threads block each other cyclically forever.
+* **[Thread-Unsafe Usage](doc/ThreadUnsafeUsage.md)**: Unsynchronized concurrent calls or accesses of application programming interfaces that are not specified to be thread safe.
 
 The abovementioned issues are all fundamental programming bugs that can lead to program errors. These issues occur non-deterministically, possibly sporadically or very seldom. They are therefore hard to identify in tests and are not easily reproducible. For this reason, it makes sense to use a static analysis that examines various program traces, including very specific or seldom cases, as to whether they suffer from such issues.
 
@@ -74,7 +74,7 @@ The following screenshot shows a detected data race issue for a C# code in Visua
 
 ![Screenshot of a data race identified by the parallel checker](https://user-images.githubusercontent.com/108720770/177280283-8aacdbc4-7f37-4c37-b47b-6022f9e05f79.png)
 
-More examples are contained in the samples section.
+More examples are contained in the [samples](doc/samples) section.
 
 ---
 
