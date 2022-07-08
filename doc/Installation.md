@@ -1,3 +1,5 @@
+![Parallel Checker](https://user-images.githubusercontent.com/108720770/178003266-bb35dd6b-d865-4b51-8d21-2bf542fe3073.png)
+
 # Installation
 
 The Parallel Checker works in Visual Studio® and VS Code. Please refer to the corresponding section for download and installation instructions.
