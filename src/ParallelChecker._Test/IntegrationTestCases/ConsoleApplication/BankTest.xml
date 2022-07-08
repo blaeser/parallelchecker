@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Data race on BankTest.BankAccount._balance"><Location Value="SourceFile([248..266))" /><Location Value="SourceFile([698..706))" /></Issue><Issue Message="Data race on BankTest.BankAccount._balance"><Location Value="SourceFile([471..489))" /><Location Value="SourceFile([698..706))" /></Issue></ParallelIssues>

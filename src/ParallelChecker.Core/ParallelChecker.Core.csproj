@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>ConcurrencyLab.ParallelChecker.Core</AssemblyName>
+    <RootNamespace>ParallelChecker.Core</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyOriginatorKeyFile>parallelchecker_keypair.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
+    <Authors>Prof. Dr. Luc Bläser</Authors>
+    <Version>2.6.0</Version>
+    <Company>OST - Ostschweizer Fachhochschule, Switzerland</Company>
+    <Copyright>Copyright © 2017-2022 Prof. Dr. Luc Bläser, OST - Ostschweizer Fachhochschule, Switzerland</Copyright>
+    <Description>Parallel Checker: Static detection of data races, deadlocks, and other concurrency issues in C#.</Description>
+    <PackageProjectUrl>https://github.com/blaeser/parallelchecker</PackageProjectUrl>
+    <Product>Parallel Checker</Product>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <AssemblyVersion>2.6.0.0</AssemblyVersion>
+    <FileVersion>2.6.0.0</FileVersion>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <PackageId>ConcurrencyLab.ParallelChecker.Core</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="license.txt" />
+    <None Include="license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="license.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.2.0">
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

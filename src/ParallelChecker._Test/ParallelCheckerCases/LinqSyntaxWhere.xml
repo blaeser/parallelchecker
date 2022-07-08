@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Data race on counter"><Location Value="SourceFile([391..398))" /><Location Value="SourceFile([391..407))" /></Issue><Issue Message="Data race on counter"><Location Value="SourceFile([391..407))" /><Location Value="SourceFile([391..407))" /></Issue></ParallelIssues>

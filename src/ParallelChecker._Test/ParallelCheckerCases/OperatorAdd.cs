@@ -1,0 +1,26 @@
+﻿using System;
+using System.Threading;
+
+namespace ParallelChecker._Test {
+  class OperatorAdd {
+    public static void Main() {
+      byte a = 1;
+      short b = 2;
+      ushort c = 3;
+      int d = 4;
+      uint e = 5;
+      long f = 6;
+      decimal g = 7m;
+      var sum = a + b + c + d + e + f + g;
+      if (sum == 28m) {
+        new Thread(() => sum = 0).Start();
+        Console.WriteLine(sum);
+      }
+      float x = 0.5f;
+      double y = 1.5;
+      if (x + y + 1 == 3) {
+        Console.WriteLine(sum);
+      }
+    }
+  }
+}

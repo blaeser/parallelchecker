@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Data race on ParallelChecker._Test.Program.Property"><Location Value="SourceFile([348..362))" /><Location Value="SourceFile([440..454))" /></Issue><Issue Message="Data race on ParallelChecker._Test.Program.Property"><Location Value="SourceFile([440..454))" /><Location Value="SourceFile([535..549))" /></Issue></ParallelIssues>

@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Data race on ParallelChecker._Test.StaticInitRace.x"><Location Value="SourceFile([186..191))" /><Location Value="SourceFile([215..216))" /></Issue></ParallelIssues>

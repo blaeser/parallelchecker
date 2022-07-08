@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Data race on Account.balance"><Location Value="SourceFile([396..403))" /><Location Value="SourceFile([763..789))" /></Issue><Issue Message="Race condition on System.Random"><Location Value="SourceFile([1055..1069))" /><Location Value="SourceFile([1055..1069))" /></Issue></ParallelIssues>

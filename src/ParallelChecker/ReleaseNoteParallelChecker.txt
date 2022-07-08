@@ -1,0 +1,274 @@
+Release Notes Parallel Checker
+-----------------------------------
+
+Version 2.6 Release Date 2022-07-07
+Parallel Checker for C# and VS 2022
+
+*******************************************************************************************
+** For previous VS 2019 support, see separate Parallel Checker release in VS Marketplace **
+*******************************************************************************************
+
+Prerequisites: VS 2022, Version 17.2.5 onwards
+Analyzes C# 10.0 backwards.
+
+Changes in checker version 2.6:
+- Changed to MIT License
+- Bug fix: Implicit collection creation with initializer
+
+Changes in checker version 2.5:
+- Support for VS 2022 Version 17.2: Automatic full solution activation adjusted
+
+Changes in checker version 2.4:
+- Further improvement of analysis coverage
+
+Changes in checker version 2.3:
+- Improved analysis coverage with more sophisticated in-the-middle analysis 
+  (distributing analysis time over all concurrency occurrences and assuming concurrency in the presence of locks)
+- Improved performance for larger projects
+
+Changes in checker version 2.2:
+- C# 10.0: Record class, record struct, readonly record struct
+- C# 10.0: Structs with parameterless constructor and field initializers
+- C# 10.0: Extended property patterns
+- C# 10.0: Global using directives, file-scoped namespace declarations
+- C# 10.0: Assignment and declaration in same deconstruction
+- Bug fix: Static initializer location
+- Bug fix: Using declarations
+- Bug fix: Empty interpolated string
+- Bug fix: Local functions in static constructor
+- Bug fix: Ref property in parameters
+- Bug fix: Non-designators passed to in parameter
+- Bug fix: Suppress operator as lambda expression
+- Bug fix: Generic local functions
+- Bug fix: Suppress operator as ref parameter argument
+- Improved tolerance on incorrect or incomplete source code
+- Improved precision on thread-unsafe calls
+- Improved performance for complex or larger projects
+
+Changes in checker version 2.1:
+- Support for VS 2022 Preview (64-bit)
+
+Changes in checker version 2.0:
+- Minor configuration fixes in analyzer release and manifest files (include Pro and Enterprise VS versions)
+
+Changes in checker version 1.9:
+- Support for VS 2019 Preview 4.0 version 16.10.0 (Roslyn process name change)
+- Extended race condition analysis on .NET API (concurrent calls on thread-unsafe API objects or classes) 
+
+Changes in checker version 1.8:
+- Tool renamed to "Parallel Checker", since HSR university has been merged to OST - Ostschweizer Fachhochschule
+- Redesign of the checker entry points for an increased analysis coverage
+
+Changes in checker version 1.7:
+- C# 9.0: Type patterns, parenthesized, conjunctive, disjunctive, negated, and relational patterns supported
+- C# 9.0: Init-only properties supported
+- C# 9.0: Records supported, incl. explicit and positional records
+- C# 9.0: With-expression supported
+- C# 9.0: Top-level statements supported
+- C# 9.0: Implicit object creation supported
+- C# 9.0: Static lambdas and anonymous methods supported
+- C# 9.0: Multiple discard parameters on lambdas supported
+- C# 9.0: Module initializers supported
+
+Changes in checker version 1.6:
+- ThreadStatic supported
+- ThreadLocal and AsyncLocal supported
+
+Changes in checker version 1.5:
+- Supporting new background analysis scopes of VS 16.5 onwards. 
+  Automatic checker activation by enabling full solution analysis. 
+  => This can be turned off under Tools->Options->Parallel Checker->"Automatic full solution analysis".
+- C# 8: ValueTask supported
+- C# 8: Range, Index, and range-based array access supported
+- Task.Delay supported
+- Task.ConfigureAwait and ValueTask.ConfigureAwait supported
+- C# 8: readonly members (readonly methods in struct) supported
+- C# 8: default interface methods supported
+- C# 8: extended stackalloc supported
+
+Changes in checker version 1.4:
+- Improved fully asynchronous loading of the checker plugin in VS
+- More concise diagnostic warning display, with expandable details
+- Bug fix: Finalizers, special false positive case resolved
+- Bug fix: Precise locations of calls in cause chain
+
+Changes in checker version 1.3:
+- Improved performance, especially for larger projects
+
+New features in checker version 1.2:
+- Shortened issue descriptions for improved readability
+- Faster analysis times, adjusted checker boundaries
+- Support for newer VS 2019 versions, 16.3.0 onwards.
+- Improved detection involving static constructor logic
+
+New features in checker version 1.1:
+- More detailed error cause descriptions, specifying the method call chain
+- Diagnostic checker information messages are turned off by default.
+  They can be activated under Tools->Options->Parallel Checker->"Diagnostic Checker Information".
+- Support of VS 2019 release.
+- C# 8: Nullable reference types
+- C# 8: null warning suppress operator !
+- C# 8: Coalesce assignment operator &&=
+- C# 8: switch expression supported
+- C# 8: Property patterns supported
+- C# 8: Tuple patterns supported
+- C# 8: Positional patterns supported
+- C# 8: Using declarations supported
+- C# 8: Static local functions supported
+- C# 8: Disposable ref structs supported
+- Support tuple assignments to parenthesized variable declarations
+- Support deconstruction into parenthesized variable declarations
+
+New features supported in checker version 1.0:
+- Improved analysis performance
+- Bug fix: Fixed array allocation support
+
+New features supported in checker version 0.9:
+- C# 7.3: Stack alloc array initialization
+- C# 7.3: Ref local reassignments
+- C# 7.3: Unmanaged constraints in generics
+- C# 7.3: Tuple equality and inequality
+- C# 7.3: Auto-property field attributes
+- C# 7.3: Fixed requires no pinning 
+- C# 7.3: Expression variables in initializers
+- C# 7.2 Fix: this ref ordering for extension methods
+- C# 7.2 Fix: By val overload tiebreaker
+- __refvalue, __reftype, and __makeref handled
+- ref expressions, conditional ref expressions
+
+New features supported in checker version 0.8:
+- C# 7.2: Reference semantics with value types
+- C# 7.2: Non-trailing named arguments
+- C# 7.2: Leading underscores in numeric literals
+- C# 7.2: protected private
+- C# 7.1: Async main
+- C# 7.1: Default literal expressions
+- C# 7.1: Inferred tuple element names
+- User prompt for enabling full solution analysis in VS
+- LINQ C#-embedded syntax and extension methods 
+- Parallel LINQ
+- Task.WhenAll, Task.WhenAny
+- using statements
+- finally clauses for try-blocks
+- C# 7: Any type desconstruction
+- Deadlock detection on cyclic thread joins or task waits/results
+- Semaphore deadlock detection
+- Bug fix: Parallel loops on arrays
+- Bug fix: Task continuation also synchronized to its creator
+- Bug fix: Handling unknown tasks in loops
+- Bug fix: C# 7 constant pattern match supported
+- Improved random entries for in-the-middle code analysis
+- Improved detection of deadlocks with larger cycles
+
+Supported features since checker version 0.7: 
+* Supported C# language features:
+- C# 7: Out variable declarations
+- C# 7: Switch pattern matching, when clauses, specific switch order
+- C# 7: Tuple types and tuple literals, Unnamed and named, deconstruction
+- C# 7: Local functions, with closures
+- C# 7: Literal improvements: digit separator, binary literal
+- C# 7: Expression-bodied accessors, constructors, finalizers
+- C# 7: Ref locals, ref arrays, ref returns, ref get properties
+- C# 7: Throw expressions
+- Static initialization
+- Arrays, incl. multi-dimensional and nested arrays
+- If/else, switch, while, do, for-, foreach-statements, goto
+- Conditional evaluation && ||
+- Conditional  expressions  ?:, ?., ?[, and ??
+- Nullable
+- Continue and breaks in loops
+- Assignments, operators
+- Lock statement
+- Method invocations, parameter passing, return values, expression bodies
+- Ref and out parameters
+- Classes and instantiation
+- Constructors and field initialization
+- Base and this constructor calls
+- Virtual calls, dynamic dispatch, abstract methods
+- Object initializers
+- Interface calls, tests and casts
+- Type casts, type tests, is and as
+- Properties, incl. auto-properties and initializers, and lambda getter-only properties
+- Array initializers, explicit and implicit
+- Implicit conversions
+- Numeric operators
+- Bool and bitwise operators
+- Char and operators
+- String and operators, string interpolation
+- Indexers
+- Anonymous methods
+- Anonymous objects
+- Delegates
+- Lambdas
+- Events
+- Structs
+- Enums
+- Constants
+- Default, typeof, sizeof functions
+- Open parameter list (params)
+- Overloaded operators
+- Overloaded casts, implicit and explicit
+- Named and optional arguments
+- Extension methods
+- Exceptions: throw, try, catch, finally, when, rethrow
+- Using statement
+- Async / await
+- Finalizers
+- Unsafe code, fixed statement (with restricted analysis)
+- Checked and unchecked expressions
+- nameof
+- Collections, API, initializers, foreach
+
+* Supported checker features:
+- VS 2017 analysis, update 5 onwards
+- Unknown symbols for external input using conservative analysis
+- Reproducible results (only seeded randoms, fully deterministic)
+- Cross-solution analysis
+- Detailed error description, cause chain report
+- Console application analysis
+- DLL analysis
+- WPF and windows forms application analysis
+- Unit test library analysis (NUnit, MSUnit, XUnit)
+- Data race detection on variables and array elements
+- Deadlock detection
+- Detection of thead-unsafe calls (e.g. on collections)
+- Explicit thread starts and joins
+- TPL task creation, start, run, wait, and result, task factory
+- Task continuations: ContinueWith, ContinueWhenAll, ContinueWhenAny
+- Task scheduler synchronization contexts
+- Parallel invoke and parallel for, parallel foreach
+- Async / await (with and without dispatcher)
+- Monitor locks
+- Monitor enter, exit, wait, pulse and pulse all
+- Volatile variables, volatile class
+- Interlocked class
+- Mixed volatile/non-volatile data races detected
+- Semaphores (incl. slim)
+- Mutex
+- Barrier
+- Countdown event
+- Reader writer lock (incl. slim)
+- Manual reset event, auto reset event, ManualResetEventSlim
+- Classical .NET thread pool
+- UI background worker (with limitations)
+- Concurrent collections, incl. blocking collection
+- Synchronized collection wrappers
+- Timer (threading timer)
+- Finalizer concurrency
+- Bound on time and memory
+- Multiple random exploration
+- Foreach using isolated variable per iteration (C# 5)
+- Randomized intermediate analysis start
+- Detecting arithmetic, null reference, illegal array index, invalid cast exceptions
+- Analyze generated XML cs
+
+Not yet supported, with potentially inaccurate analysis:
+- yield statement (synchronous and asynchronous iterators)
+- Several specific API calls
+- LINQ syntax: select many, join, group, orderby, let 
+- LINQ extensions: certain specific extension methods
+- Cancellation token
+- Parallel loop break and stop
+- Assignment to "this" in struct constructor
+- weak references
+- analysis in external compiled libraries

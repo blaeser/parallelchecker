@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Data race on ParallelChecker._Test.Test.Property1"><Location Value="SourceFile([169..178))" /><Location Value="SourceFile([307..322))" /></Issue></ParallelIssues>

@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Data race on ParallelChecker._Test.AsyncAwaitResults.race"><Location Value="SourceFile([194..202))" /><Location Value="SourceFile([401..409))" /></Issue></ParallelIssues>

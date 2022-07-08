@@ -1,0 +1,18 @@
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace TestContinue {
+  class Program {
+    static void Main(string[] args) {
+      var counter1 = 0;
+      var counter2 = 0;
+      var task1 = Task.Run(() => ++counter1);
+      var task2 = Task.Run(() => ++counter2);
+      
+      Task.WaitAll(task1, task2);
+      ++counter1;
+      ++counter2;
+    }
+  }
+}

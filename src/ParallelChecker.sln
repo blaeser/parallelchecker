@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31423.177
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6397DBB-8B1A-4381-96AA-D27EC76EF6B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelChecker", "ParallelChecker\ParallelChecker.csproj", "{7BA9F750-DB40-4EAD-9633-2B50DD7B6FC8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelChecker.Core", "ParallelChecker.Core\ParallelChecker.Core.csproj", "{C12B0414-3116-4D69-B135-23BB5E2BDE4C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelChecker._Test", "ParallelChecker._Test\ParallelChecker._Test.csproj", "{3157A8CC-F2AD-4400-9CDE-793A26B92CCF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelChecker.Analyzer", "ParallelChecker.Analyzer\ParallelChecker.Analyzer.csproj", "{03D93F6D-D640-449A-83A8-688DC3C54AC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BA9F750-DB40-4EAD-9633-2B50DD7B6FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA9F750-DB40-4EAD-9633-2B50DD7B6FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA9F750-DB40-4EAD-9633-2B50DD7B6FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA9F750-DB40-4EAD-9633-2B50DD7B6FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C12B0414-3116-4D69-B135-23BB5E2BDE4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C12B0414-3116-4D69-B135-23BB5E2BDE4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C12B0414-3116-4D69-B135-23BB5E2BDE4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C12B0414-3116-4D69-B135-23BB5E2BDE4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3157A8CC-F2AD-4400-9CDE-793A26B92CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3157A8CC-F2AD-4400-9CDE-793A26B92CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3157A8CC-F2AD-4400-9CDE-793A26B92CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3157A8CC-F2AD-4400-9CDE-793A26B92CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D93F6D-D640-449A-83A8-688DC3C54AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D93F6D-D640-449A-83A8-688DC3C54AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D93F6D-D640-449A-83A8-688DC3C54AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D93F6D-D640-449A-83A8-688DC3C54AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFE62E3A-9499-4909-8572-775D99C0CEBF}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1 @@
+<ParallelIssues><Issue Message="Race condition on System.Collections.Generic.List&lt;int&gt;"><Location Value="SourceFile([260..268))" /><Location Value="SourceFile([302..315))" /></Issue></ParallelIssues>
