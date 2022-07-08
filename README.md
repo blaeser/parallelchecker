@@ -1,6 +1,6 @@
-# Parallel Checker
+![Parallel Checker](https://user-images.githubusercontent.com/108720770/178002740-372e6ec2-fea4-4a5f-99e9-692e4bdf7520.png)
 
-The Parallel Checker (formerly also called "HSR Parallel Checker") is a static analyzer for Visual Studio® and VS Code that detects data races, deadlocks, and other concurrency issues in C#.
+The **Parallel Checker** is a static analyzer for Visual Studio® and VS Code that detects data races, deadlocks, and other concurrency issues in C#.
 
 ## Highlights
 
