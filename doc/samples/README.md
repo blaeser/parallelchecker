@@ -1,3 +1,5 @@
+![Parallel Checker](https://user-images.githubusercontent.com/108720770/178003323-7b4cc7e3-738c-4d6d-8ce8-b33ee2dfa34a.png)
+
 # Samples
 
 The following set of Visual Studio® solutions shows exemplary code of concurrency issues that are detected by the Parallel Checker. Each case is provided with an explanation of the issues and corresponding correction advice.
