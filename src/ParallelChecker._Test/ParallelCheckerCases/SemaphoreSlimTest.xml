@@ -1,1 +1,1 @@
-<ParallelIssues><Issue Message="Data race on race"><Location Value="SourceFile([246..254))" /><Location Value="SourceFile([342..346))" /></Issue></ParallelIssues>
+<ParallelIssues><Issue Message="Data race on race"><Location Value="SourceFile([236..244))" /><Location Value="SourceFile([328..332))" /></Issue></ParallelIssues>

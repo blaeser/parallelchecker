@@ -54,6 +54,10 @@ namespace ParallelChecker._Test {
       return new CompilationModel(compilation, CancellationToken.None);
     }
 
+    public static string ReadCode(string filePath) {
+      return File.ReadAllText(filePath).ReplaceLineEndings("\n");
+    }
+
     public static void CompareAgainstReference(FileSystemInfo file, Action<string> exportToFile, string reportFileExtension) {
       var effectiveFile = ReplaceExtension(file.FullName, _CSharpFileExtension, _TemporaryFileExtension);
       exportToFile(effectiveFile);

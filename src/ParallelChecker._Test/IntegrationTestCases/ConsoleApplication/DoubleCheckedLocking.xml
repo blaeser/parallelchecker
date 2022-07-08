@@ -1,1 +1,1 @@
-<ParallelIssues><Issue Message="Data race on DoubleCheckedLocking.Singleton.instance"><Location Value="SourceFile([417..425))" /><Location Value="SourceFile([615..641))" /></Issue></ParallelIssues>
+<ParallelIssues><Issue Message="Data race on DoubleCheckedLocking.Singleton.instance"><Location Value="SourceFile([398..406))" /><Location Value="SourceFile([590..616))" /></Issue></ParallelIssues>

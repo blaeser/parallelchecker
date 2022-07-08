@@ -1,1 +1,1 @@
-<ParallelIssues><Issue Message="Deadlock with 2 threads"><Location Value="SourceFile([299..343))" /><Location Value="SourceFile([436..495))" /></Issue></ParallelIssues>
+<ParallelIssues><Issue Message="Deadlock with 2 threads"><Location Value="SourceFile([287..329))" /><Location Value="SourceFile([417..474))" /></Issue></ParallelIssues>

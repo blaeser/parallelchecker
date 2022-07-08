@@ -32,7 +32,7 @@ namespace ParallelChecker._Test {
 
     private static void TestControlFlowCase(FileInfo file) {
       Console.WriteLine("Checking {0}", file.Name);
-      var code = File.ReadAllText(file.FullName);
+      var code = TestUtilities.ReadCode(file.FullName);
       var compilationModel = TestUtilities.LoadCompilationModel(OutputKind.ConsoleApplication, new string[] { code }, Array.Empty<string>());
       var controlFlowModel = new ControlFlowModel(compilationModel);
       TestUtilities.CompareAgainstReference(file, fileName => ControlFlowDiagram.Export(controlFlowModel, fileName), _DiagramFileExtension);

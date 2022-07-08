@@ -50,7 +50,7 @@ namespace ParallelChecker._Test {
     private static string[] ReadAllCodeFiles(DirectoryInfo folder) {
       var result = new List<string>();
       foreach (var file in folder.GetFiles(_CSharpFileSearchPattern)) {
-        result.Add(File.ReadAllText(file.FullName));
+        result.Add(TestUtilities.ReadCode(file.FullName));
       }
       return result.ToArray();
     }

@@ -32,7 +32,7 @@ namespace ParallelChecker._Test {
 
     private static void CheckParallelCase(FileInfo file) {
       Console.WriteLine("Checking {0}", file.Name);
-      var code = File.ReadAllText(file.FullName);
+      var code = TestUtilities.ReadCode(file.FullName);
       var compilationModel = TestUtilities.LoadCompilationModel(OutputKind.ConsoleApplication, new string[] { code }, Array.Empty<string>());
       var controlFlowModel = new ControlFlowModel(compilationModel);
       var issues = ParallelAnalysis.FindIssues(compilationModel.Compilation, compilationModel.CancellationToken, AnalysisOptions.Default, out bool faulted);

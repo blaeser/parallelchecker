@@ -1,1 +1,1 @@
-<ParallelIssues><Issue Message="Data race on max"><Location Value="SourceFile([278..305))" /><Location Value="SourceFile([278..305))" /></Issue><Issue Message="Data race on max"><Location Value="SourceFile([278..305))" /><Location Value="SourceFile([301..304))" /></Issue></ParallelIssues>
+<ParallelIssues><Issue Message="Data race on max"><Location Value="SourceFile([268..295))" /><Location Value="SourceFile([268..295))" /></Issue><Issue Message="Data race on max"><Location Value="SourceFile([268..295))" /><Location Value="SourceFile([291..294))" /></Issue></ParallelIssues>

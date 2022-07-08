@@ -1,1 +1,1 @@
-<ParallelIssues><Issue Message="Data race on ParallelChecker._Test.Singleton.instance"><Location Value="SourceFile([344..371))" /><Location Value="SourceFile([462..488))" /></Issue></ParallelIssues>
+<ParallelIssues><Issue Message="Data race on ParallelChecker._Test.Singleton.instance"><Location Value="SourceFile([329..356))" /><Location Value="SourceFile([444..470))" /></Issue></ParallelIssues>

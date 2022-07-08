@@ -1,1 +1,1 @@
-<ParallelIssues><Issue Message="Race condition on System.Collections.Generic.Queue&lt;T&gt;"><Location Value="SourceFile([306..328))" /><Location Value="SourceFile([369..387))" /></Issue></ParallelIssues>
+<ParallelIssues><Issue Message="Race condition on System.Collections.Generic.Queue&lt;T&gt;"><Location Value="SourceFile([293..315))" /><Location Value="SourceFile([352..370))" /></Issue></ParallelIssues>
