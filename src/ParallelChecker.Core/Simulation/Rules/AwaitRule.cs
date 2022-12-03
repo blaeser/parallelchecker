@@ -44,10 +44,10 @@ namespace ParallelChecker.Core.Simulation.Rules {
         program.StartThread(newThread);
         if (configureAwait && currentThread.Dispatcher != null) {
           currentThread.Dispatcher.Register(newThread);
-        } 
+        }
         AsyncReturn(program, newThread);
-      } else if (currentThread.Dispatcher != null) {
-        currentThread.Dispatcher.PauseCurrent();
+      } else {
+        currentThread.Dispatcher?.PauseCurrent();
       }
     }
 

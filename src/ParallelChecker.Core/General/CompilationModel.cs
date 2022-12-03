@@ -146,29 +146,23 @@ namespace ParallelChecker.Core.General {
 
     public ICollection<MethodDeclarationSyntax> AllMethods {
       get {
-        if (_allMethods == null) {
-          _allMethods = this.GetAllMethods().ToList();
-        }
+        _allMethods ??= this.GetAllMethods().ToList();
         return _allMethods;
       }
     }
 
     public ISet<string> FinalizableTypes {
       get {
-        if (_finalizableNames == null) {
-          _finalizableNames = new HashSet<string>(
+        _finalizableNames ??= new HashSet<string>(
             from node in _finalizableClasses
             select node.Identifier.ValueText);
-        }
         return _finalizableNames;
       }
     }
 
     public IList<MethodDeclarationSyntax> ModuleInitializers {
       get {
-        if (_moduleInitializers == null) {
-          _moduleInitializers = this.RetrieveModuleInitializers();
-        }
+        _moduleInitializers ??= this.RetrieveModuleInitializers();
         return _moduleInitializers;
       }
     }

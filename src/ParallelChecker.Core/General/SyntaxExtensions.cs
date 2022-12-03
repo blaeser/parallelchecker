@@ -557,9 +557,7 @@ namespace ParallelChecker.Core.General {
 
     public static AccessorDeclarationSyntax FindInitOrSetAccesor(this BasePropertyDeclarationSyntax property) {
       var accessor = FindAccessor(property, SyntaxKind.InitAccessorDeclaration);
-      if (accessor == null) {
-        accessor = FindAccessor(property, SyntaxKind.SetAccessorDeclaration);
-      }
+      accessor ??= FindAccessor(property, SyntaxKind.SetAccessorDeclaration);
       return accessor;
     }
 
@@ -619,12 +617,8 @@ namespace ParallelChecker.Core.General {
     }
 
     private static bool TryGetMethod(ITypeSymbol containingType, string methodName, ITypeSymbol[] parameterTypes, RefKind[] parameterRefKinds, out IMethodSymbol method) {
-      if(parameterTypes == null) {
-        parameterTypes = new ITypeSymbol[0];
-      }
-      if(parameterRefKinds == null) {
-        parameterRefKinds = new RefKind[0];
-      }
+      parameterTypes ??= new ITypeSymbol[0];
+      parameterRefKinds ??= new RefKind[0];
       method = null;
       var candidates = (from candidate in containingType.GetMembers().OfType<IMethodSymbol>()
                         where candidate.Name.Equals(methodName)

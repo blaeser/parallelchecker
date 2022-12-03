@@ -64,9 +64,7 @@ namespace ParallelChecker.Core.Simulation {
     }
 
     private static void LazyAdd(ref HashSet<Cause> set, Cause cause) {
-      if (set == null) {
-        set = new HashSet<Cause>();
-      }
+      set ??= new HashSet<Cause>();
       set.Add(cause);
     }
   }
