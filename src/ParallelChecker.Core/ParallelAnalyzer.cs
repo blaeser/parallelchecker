@@ -77,6 +77,10 @@ namespace ParallelChecker.Core {
         ReportIssues(context.ReportDiagnostic, result);
 #if DEBUG
         ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
+#else
+        if (faulted) {
+          ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
+        }
 #endif
       } catch (Exception exception) {
         ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);

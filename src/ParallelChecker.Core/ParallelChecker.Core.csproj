@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>ConcurrencyLab.ParallelChecker.Core</AssemblyName>
-    <RootNamespace>ParallelChecker.Core</RootNamespace>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <LangVersion>latest</LangVersion>
-    <SignAssembly>False</SignAssembly>
-    <AssemblyOriginatorKeyFile>parallelchecker_keypair.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>False</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>ParallelChecker</PackageId>
     <Authors>Prof. Dr. Luc Bläser</Authors>
     <Version>2.6.0</Version>
     <Company>OST - Ostschweizer Fachhochschule, Switzerland</Company>
@@ -14,14 +16,11 @@
     <Description>Parallel Checker: Static detection of data races, deadlocks, and other concurrency issues in C#.</Description>
     <PackageProjectUrl>https://github.com/blaeser/parallelchecker</PackageProjectUrl>
     <Product>Parallel Checker</Product>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <AssemblyVersion>2.6.0.0</AssemblyVersion>
-    <FileVersion>2.6.0.0</FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <EnableNETAnalyzers>false</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
-    <PackageId>ConcurrencyLab.ParallelChecker.Core</PackageId>
+    <PackageTags>C#, Data Race, Race Condition, Deadlock, Thread, Task, Parallel, Asynchronous, Concurrency, TPL, Static Analysis, async, await</PackageTags>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
