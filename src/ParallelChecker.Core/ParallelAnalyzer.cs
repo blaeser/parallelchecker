@@ -1,13 +1,12 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
-using ParallelChecker.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
 
-namespace ParallelChecker {
+namespace ParallelChecker.Core {
   [DiagnosticAnalyzer(LanguageNames.CSharp)]
   public class ParallelAnalyzer : DiagnosticAnalyzer {
     private const string _DiagnosticId = "ParallelChecker";
@@ -18,7 +17,7 @@ namespace ParallelChecker {
     private const string _FaultSign = "*";
     private const string _NoneSign = "-";
 
-    private static readonly Dictionary<IssueCategory, string> _helpLinks = new Dictionary<IssueCategory, string>() {
+    private static readonly Dictionary<IssueCategory, string> _helpLinks = new() {
       { IssueCategory.DataRace, "https://github.com/blaeser/parallelchecker/blob/main/doc/DataRace.md" },
       { IssueCategory.Deadlock, "https://github.com/blaeser/parallelchecker/blob/main/doc/Deadlock.md" },
       { IssueCategory.UnsafeCalls, "https://github.com/blaeser/parallelchecker/blob/main/doc/ThreadUnsafeUsage.md" }
@@ -27,15 +26,13 @@ namespace ParallelChecker {
     private const string _GeneralHelpLink = "https://github.com/blaeser/parallelchecker";
 
     private static readonly DiagnosticDescriptor _diagnosticWarning =
-      new DiagnosticDescriptor(_DiagnosticId, _DiagnosticTitle, _WarningFormat,
+      new(_DiagnosticId, _DiagnosticTitle, _WarningFormat,
         _Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, helpLinkUri: _GeneralHelpLink);
     private static readonly DiagnosticDescriptor _diagnosticInfo =
-#pragma warning disable RS2001 // Ensure up-to-date entry for analyzer diagnostic IDs are added to analyzer release.
-      new DiagnosticDescriptor(_DiagnosticId, _DiagnosticTitle, _InfoFormat,
+      new(_DiagnosticId, _DiagnosticTitle, _InfoFormat,
         _Category, DiagnosticSeverity.Info, isEnabledByDefault: true, helpLinkUri: _GeneralHelpLink);
-#pragma warning restore RS2001 // Ensure up-to-date entry for analyzer diagnostic IDs are added to analyzer release.
 
-    private static readonly AnalysisOptions _options = new AnalysisOptions() {
+    private static readonly AnalysisOptions _options = new() {
       DetectedIssues = { IssueCategory.DataRace, IssueCategory.Deadlock, IssueCategory.UnsafeCalls }
     };
 
@@ -48,24 +45,46 @@ namespace ParallelChecker {
     public override void Initialize(AnalysisContext context) {
       context.EnableConcurrentExecution();
       context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze);
-      context.RegisterCompilationAction(CompilationAction);
+      context.RegisterSemanticModelAction(SemanticModelAction);
     }
 
-    private void CompilationAction(CompilationAnalysisContext context) {
+    private static readonly Dictionary<string, HashSet<string>> _cache = new();
+
+    private void SemanticModelAction(SemanticModelAnalysisContext context) {
+      var assembly = context.SemanticModel.Compilation.Assembly.Name;
+      var file = context.SemanticModel.SyntaxTree.FilePath;
+      var reset = false;
+      lock (_cache) {
+        if (!_cache.ContainsKey(assembly)) {
+          _cache[assembly] = new HashSet<string>();
+          reset = true;
+        }
+        var set = _cache[assembly];
+        if (set.Contains(file)) {
+          set.Clear();
+          reset = true;
+        }
+        set.Add(file);
+      }
+      if (!reset) {
+        return;
+      }
+      var location = context.SemanticModel.SyntaxTree.GetRoot().GetLocation();
       var watch = Stopwatch.StartNew();
       try {
-        var result = ParallelAnalysis.FindIssues(context.Compilation, context.CancellationToken, _options, out bool faulted);
+        var semanticModel = context.SemanticModel;
+        var result = ParallelAnalysis.FindIssues(semanticModel.Compilation, context.CancellationToken, _options, out bool faulted);
         ReportIssues(context.ReportDiagnostic, result);
-        if (DisplayOptions.EnableInformationMessages) {
-          ReportInfo(context.ReportDiagnostic, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
-        }
+#if DEBUG
+        ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
+#endif
       } catch (Exception exception) {
-        ReportInfo(context.ReportDiagnostic, watch, _NoneSign, exception.Message);
+        ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);
       }
     }
-
-    private void ReportInfo(Action<Diagnostic> report, Stopwatch watch, string issues, string text) {
-      var diagnostic = Diagnostic.Create(_diagnosticInfo, Location.None, watch.ElapsedMilliseconds, issues, text);
+    
+    private void ReportInfo(Action<Diagnostic> report, Location location, Stopwatch watch, string issues, string text) {
+      var diagnostic = Diagnostic.Create(_diagnosticInfo, location, watch.ElapsedMilliseconds, issues, text);
       report(diagnostic);
     }
 
@@ -82,7 +101,7 @@ namespace ParallelChecker {
         var title = string.Format(_WarningFormat, number, issue.Message);
         var helpLink = _GeneralHelpLink;
         _helpLinks.TryGetValue(issue.Category, out helpLink);
-        var diagnostic = Diagnostic.Create(_diagnosticWarning.Id, _diagnosticWarning.Category, title, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.IsEnabledByDefault, 3, title, issue.Description, helpLink, cause.Location, issue.Causes.Select(x => x.Location), null, null); 
+        var diagnostic = Diagnostic.Create(_diagnosticWarning.Id, _diagnosticWarning.Category, title, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.IsEnabledByDefault, 3, title, issue.Description, helpLink, cause.Location, issue.Causes.Select(x => x.Location), null, null);
         report(diagnostic);
       }
     }
