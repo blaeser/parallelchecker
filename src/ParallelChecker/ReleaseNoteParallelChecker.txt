@@ -1,15 +1,19 @@
 Release Notes Parallel Checker
 -----------------------------------
 
-Version 2.6 Release Date 2022-07-07
+Version 2.7 Release Date 2022-12-04
 Parallel Checker for C# and VS 2022
 
 *******************************************************************************************
 ** For previous VS 2019 support, see separate Parallel Checker release in VS Marketplace **
 *******************************************************************************************
 
-Prerequisites: VS 2022, Version 17.2.5 onwards
+Prerequisites: VS 2022, Version 17.4.2 onwards
 Analyzes C# 10.0 backwards.
+
+Changes in checker version 2.7:
+- Support for latest VS 2022, Version 17.3 onwards
+- Switched from full solution analysis to semantic model analysis
 
 Changes in checker version 2.6:
 - Changed to MIT License

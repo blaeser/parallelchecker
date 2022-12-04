@@ -2,7 +2,7 @@ Getting Started with the Parallel Checker
 -----------------------------------
 
 Prerequisites:
-- Visual Studio (R) 2022, Version 17.2.5 onwards
+- Visual Studio (R) 2022, Version 17.4.2 onwards
 
 *******************************************************************************************
 ** For previous VS 2019 support, see separate Parallel Checker release in VS Marketplace **
@@ -11,23 +11,30 @@ Prerequisites:
 Previous checker versions for older Visual Studio (R) versions can also be found under: https://github.com/blaeser/parallelchecker.
 
 Installation:
-1. Download the parallel checker release for your Visual Studio (R) version.
-2. Double click "ConcurrencyLab.ParallelChecker.vsix" and run the installation program.
-3. Start or restart Visual Studio (R). 
-4. Open a .NET solution with at least one C# project.
-5. Open the "Error List" view. Enable information messages with the blue icon to see whether the checker has run. 
-   Checker messages will here be listed with a delay of a few seconds. 
-6. If messages do not appear right away after opening the solution, it may help to build the solution or edit and save the source code to trigger the background analysis process.
+1. In Visual Studio (R): Select Tools -> Extensions and Updates...
+2. Select Online and search for "Parallel Checker".
+3. Select "Parallel Checker for C# 10 (VS 2022)" and install it.
+4. Restart Visual Studio®.
+5. Open Visual Studio® and open a solution with an empty C# console .NET application project.
+   Paste the following code into "Program.cs" that contains a data race:
 
+     using System;
+     using System.Threading.Tasks;
+
+     class Program {
+         static void Main() {
+             int x = 0;
+             Task.Run(() => x++);
+             Console.Write(x);
+         }
+     }
+   
+6. Open the "Error List" view. Checker messages will here be listed with a delay of a few seconds. 
+   Errors will also be marked in the code by yellow squiggle.
+  
 Documentation, Samples and more
 --> See the project website https://github.com/blaeser/parallelchecker
 --> Play with the samples https://github.com/blaeser/parallelchecker/tree/main/doc/samples
-
-Notes:
-- The checker will automatically enable C# full solution analysis. 
-  To disable this, go to Tools->Options->Parallel Checker, then set "Automatic full solution analysis" to "false".  Subsequently, disable entire solution analysis under the options of “Text Editor->C#->Advanced”. Restart VS.
-- Checker information messages (with the blue icon) are turned on by default. 
-  To deactivate them, go to Tools->Options->Parallel Checker: Set "Diagnostic Checker Information" to "false". Reload the solution or restart VS.
 
 Uninstall:
 - See https://github.com/blaeser/parallelchecker/blob/main/doc/Installation.md (section "Uninstall").
