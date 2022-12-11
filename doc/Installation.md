@@ -45,6 +45,8 @@ This is the simplest way to install the latest version.
 
 7. Get started by trying the samples.
 
+**Hint: To trigger the analysis, it may help to build the solution or edit and save the source code.**
+
 ## Instructions for VS Code
 
 To use the Parallel Checker in VS Code, you need to integrate the Parallel Checker as a NuGet analyzer package to your C# projects. Once the package is added to the projects, concurrency analysis is triggered and reported within VS Code.
