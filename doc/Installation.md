@@ -45,7 +45,13 @@ This is the simplest way to install the latest version.
 
 7. Get started by trying the samples.
 
-**Hint: To trigger the analysis, it may help to build the solution or edit and save the source code.**
+**Hint**: To trigger the analysis, it may help:
+* Increase analysis scope: 
+    - Menu "Tools"->"Options"
+    - Select option page "Text Editor"->"C#"->"Advanced"
+    - Change "Run background code analysis for:" to "Entire solution".
+    - Change "Show compiler errors and warning for:" also to "Entire solution".
+* Build the solution or edit and save the source code.
 
 ## Instructions for VS Code
 
