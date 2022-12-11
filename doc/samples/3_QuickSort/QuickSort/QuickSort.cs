@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace QuickSort
 {
-    class QuickSort
+    public class QuickSort
     {
-        public static void Sort(int[] array)
+        static void Sort(int[] array)
         {
             Sort(array, 0, array.Length - 1);
         }
@@ -35,6 +36,12 @@ namespace QuickSort
             });
             rightTask.Wait();
             leftTask.Wait();
+        }
+
+        public static void Main() {
+            var array = new int[] { 1, 5, 3, -2, 6, 0, 19, 7, 1 };
+            Sort(array);
+            Console.WriteLine(string.Join(",", array));
         }
     }
 }
