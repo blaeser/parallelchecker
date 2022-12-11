@@ -1590,9 +1590,7 @@ namespace ParallelChecker.Core.ControlFlow {
 
     private StraightBlock GetGotoDefaultEntry(Location location) {
       var switchScope = GetInnermostScope<SwitchScope>();
-      if (switchScope.DefaultLabel == null) {
-        switchScope.DefaultLabel = new EmptyBlock(location);
-      }
+      switchScope.DefaultLabel ??= new EmptyBlock(location);
       return switchScope.DefaultLabel;
     }
 

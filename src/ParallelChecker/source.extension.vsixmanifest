@@ -1,38 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-    <Metadata>
-        <Identity Id="ConcurrencyLab.ParallelChecker.9812fea9-fb18-4715-ab6f-04a44db714d4" Version="2.6" Language="en-US" Publisher="Luc Bläser" />
-        <DisplayName>Parallel Checker for C# 10 (VS 2022)</DisplayName>
-        <Description xml:space="preserve">Static detection of data races, deadlocks, and other concurrency issues in C# source code.</Description>
-        <MoreInfo>https://github.com/blaeser/parallelchecker</MoreInfo>
-        <License>license.txt</License>
-        <GettingStartedGuide>getting_started.txt</GettingStartedGuide>
-        <ReleaseNotes>ReleaseNoteParallelChecker.txt</ReleaseNotes>
-        <Icon>logo.ico</Icon>
-        <PreviewImage>preview_image.png</PreviewImage>
-        <Tags>Concurrency, Parallel, Static, Checker, Data Race, Deadlock, Race Conditions</Tags>
-    </Metadata>
-    <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,18.0)">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,18.0)">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-    </Installation>
-    <Dependencies>
-        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
-        <Dependency d:Source="Installed" Id="Microsoft.VisualStudio.MPF.17.0" DisplayName="Visual Studio MPF 17.0" Version="[17.0,18.0)" />
-    </Dependencies>
-    <Assets>
-        <Asset d:Source="Project" d:ProjectName="%CurrentProject%" Type="Microsoft.VisualStudio.MefComponent" Path="|%CurrentProject%|" />
-        <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
-        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    </Assets>
-    <Prerequisites>
-        <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[16.0,18.0)" DisplayName="C# and Visual Basic" />
-    </Prerequisites>
+  <Metadata>
+    <Identity Id="ConcurrencyLab.ParallelChecker.9812fea9-fb18-4715-ab6f-04a44db714d4" Version="2.7" Language="en-US" Publisher="Luc Bläser" />
+    <DisplayName>Parallel Checker for C# 10 (VS 2022)</DisplayName>
+    <Description xml:space="preserve">Static detection of data races, deadlocks, and other concurrency issues in C# source code.</Description>
+    <MoreInfo>https://github.com/blaeser/parallelchecker</MoreInfo>
+    <License>license.txt</License>
+    <GettingStartedGuide>getting_started.txt</GettingStartedGuide>
+    <ReleaseNotes>ReleaseNoteParallelChecker.txt</ReleaseNotes>
+    <Icon>logo.ico</Icon>
+    <PreviewImage>preview_image.png</PreviewImage>
+    <Tags>Concurrency, Parallel, Static, Checker, Data Race, Deadlock, Race Conditions</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.3,17.0)">
+      <ProductArchitecture>x86</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[16.3,17.0)">
+      <ProductArchitecture>x86</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[16.3,17.0)">
+      <ProductArchitecture>x86</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="ParallelChecker.Core" Path="|ParallelChecker.Core|" />
+  </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
 </PackageManifest>

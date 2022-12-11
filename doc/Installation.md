@@ -15,15 +15,12 @@ This is the simplest way to install the latest version.
 
 ### Prerequisites:
 
-* Visual Studio® 2022 (Version 17.2.0 or higher)
+* Visual Studio® 2022 (Version 17.4.0 or higher)
 
 ### Notes:
 
-1. **The checker will automatically enable C# entire solution analysis.** If you prefer to deactivate this behavior, go to `Tools->Options->Parallel Checker`, then set `Automatic full solution analysis` to `false`. Subsequently, navigate to the option `Text Editor->C#->Advanced->Run background code analysis for:` and select another value than `entire solution`. Restart VS.
-
-2. **Checker information messages (with blue icom) are turned on by default.** If you prefer to suppress these messages, go to `Tools->Options->Parallel Checker` and set `Diagnostic Checker Information` to `false`. Reload the solution or restart VS.
-
-3. **If checker messages are not being displayed, please activate full solution analysis manually:** Go to menu `Tools->Options`, navigate to `Text Editor->C#->Advanced`, and select `Entire solution` under `Run background code analysis for:`.
+* To improve compatibility and ease installation, the Parallel Checker does no longer require full solution analysis mode activated in Visual Studio.
+* Parallel Checker does no longer display diagnostic information messages on successful analysis. Only in the case of internal checker errors (e.g. implementation restrictions), the information messages are displayed.
 
 ### Installation:
 
@@ -46,10 +43,15 @@ This is the simplest way to install the latest version.
         }
 
 
-7. Enable information messages with the blue icon to see whether the checker has run. Checker messages will here be listed with a delay of a few seconds. The information messages can be disabled on the checker options (see notes above).
-8. **Hint: To trigger the analysis, it may help to build the solution or edit and save the source code.**
-9. **If checker messages are not being displayed, please activate full solution analysis manually**: Go to menu `Tools->Options`, navigate to `Text Editor->C#->Advanced`, and select `Entire solution` under `Run background code analysis for:`.
-10. Get started by trying the samples.
+7. Get started by trying the samples.
+
+**Hint**: To trigger the analysis, it may help:
+* Increase analysis scope: 
+    - Menu "Tools"->"Options"
+    - Select option page "Text Editor"->"C#"->"Advanced"
+    - Change "Run background code analysis for:" to "Entire solution".
+    - Change "Show compiler errors and warning for:" also to "Entire solution".
+* Build the solution or edit and save the source code.
 
 ## Instructions for VS Code
 
@@ -86,7 +88,7 @@ To use the Parallel Checker in VS Code, you need to integrate the Parallel Check
 
 1. Open Visual Studio®.
 2. Menu: `Tools->Extensions and Updates`.
-3. In the list of installed extensions, select "C# Parallel Checker".
+3. In the list of installed extensions, select "Parallel Checker for C# 10 (VS 2022)".
 4. Click on `Uninstall`, confirm with Yes.
 5. Restart Visual Studio®.
 
@@ -99,6 +101,7 @@ The checker has certain implementation restrictions that are planned to be addre
 * Cancellation token
 * Parallel loop break and stop
 * Weak references
+* Limited analysis precision on collection
 
 ---
 

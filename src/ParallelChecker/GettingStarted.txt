@@ -1,0 +1,40 @@
+Getting Started with the Parallel Checker 
+-----------------------------------
+
+Prerequisites:
+- Visual Studio (R) 2022, Version 17.4.2 onwards
+
+*******************************************************************************************
+** For previous VS 2019 support, see separate Parallel Checker release in VS Marketplace **
+*******************************************************************************************
+
+Previous checker versions for older Visual Studio (R) versions can also be found under: https://github.com/blaeser/parallelchecker.
+
+Installation:
+1. In Visual Studio (R): Select Tools -> Extensions and Updates...
+2. Select Online and search for "Parallel Checker".
+3. Select "Parallel Checker for C# 10 (VS 2022)" and install it.
+4. Restart Visual Studio®.
+5. Open Visual Studio® and open a solution with an empty C# console .NET application project.
+   Paste the following code into "Program.cs" that contains a data race:
+
+     using System;
+     using System.Threading.Tasks;
+
+     class Program {
+         static void Main() {
+             int x = 0;
+             Task.Run(() => x++);
+             Console.Write(x);
+         }
+     }
+   
+6. Open the "Error List" view. Checker messages will here be listed with a delay of a few seconds. 
+   Errors will also be marked in the code by yellow squiggle.
+  
+Documentation, Samples and more
+--> See the project website https://github.com/blaeser/parallelchecker
+--> Play with the samples https://github.com/blaeser/parallelchecker/tree/main/doc/samples
+
+Uninstall:
+- See https://github.com/blaeser/parallelchecker/blob/main/doc/Installation.md (section "Uninstall").

@@ -106,9 +106,7 @@ namespace ParallelChecker.Core.Simulation.Base {
       thread.State = ThreadState.Terminated;
       SyncFromStaticLoader(program, thread);
       thread.WaitersForJoin.NotifyAll();
-      if (thread.Dispatcher != null) {
-        thread.Dispatcher.ScheduleNext();
-      }
+      thread.Dispatcher?.ScheduleNext();
       foreach (var continuation in thread.Continuations) {
         RunContinuation(program, thread, continuation);
       }

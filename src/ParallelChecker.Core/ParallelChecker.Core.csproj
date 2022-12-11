@@ -1,55 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>ConcurrencyLab.ParallelChecker.Core</AssemblyName>
-    <RootNamespace>ParallelChecker.Core</RootNamespace>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <LangVersion>latest</LangVersion>
-    <SignAssembly>False</SignAssembly>
-    <AssemblyOriginatorKeyFile>parallelchecker_keypair.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>False</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>ConcurrencyLab.ParallelChecker</PackageId>
     <Authors>Prof. Dr. Luc Bläser</Authors>
-    <Version>2.6.0</Version>
+    <Version>2.7.0</Version>
     <Company>OST - Ostschweizer Fachhochschule, Switzerland</Company>
     <Copyright>Copyright © 2017-2022 Prof. Dr. Luc Bläser, OST - Ostschweizer Fachhochschule, Switzerland</Copyright>
     <Description>Parallel Checker: Static detection of data races, deadlocks, and other concurrency issues in C#.</Description>
     <PackageProjectUrl>https://github.com/blaeser/parallelchecker</PackageProjectUrl>
     <Product>Parallel Checker</Product>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <AssemblyVersion>2.6.0.0</AssemblyVersion>
-    <FileVersion>2.6.0.0</FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <EnableNETAnalyzers>false</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
-    <PackageId>ConcurrencyLab.ParallelChecker.Core</PackageId>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>false</Optimize>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE</DefineConstants>
+    <PackageTags>C#, Data Race, Race Condition, Deadlock, Thread, Task, Parallel, Asynchronous, Concurrency, TPL, Static Analysis, async, await</PackageTags>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <RepositoryUrl>https://github.com/blaeser/parallelchecker</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="license.txt" />
-    <None Include="license.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.2.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tools\*.ps1" CopyToOutputDirectory="Always" Pack="true" PackagePath="" />
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
 </Project>

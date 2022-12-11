@@ -32,9 +32,7 @@ namespace ParallelChecker.Core.Simulation.Model {
       } else if (_runnable.State == ThreadState.Terminated) {
         var terminated = _runnable;
         _runnable = SelectNext();
-        if (_runnable != null) {
-          _runnable.SynchronizeWith(terminated);
-        }
+        _runnable?.SynchronizeWith(terminated);
       }
       if (_runnable != null) {
         _runnable.Time.SynchronizeWith(_lastTime);

@@ -148,9 +148,7 @@ namespace ParallelChecker.Core.Simulation.Rules {
 
     private static void ApplyEventOperator(SyntaxKind op, object left, object right) {
       var target = (Variable)left;
-      if (target.Value == null) {
-        target.Value = new Event();
-      }
+      target.Value ??= new Event();
       var eventNode = (Event)target.Value;
       if (op == SyntaxKind.SimpleAssignmentExpression) {
         eventNode.Handlers.Clear();

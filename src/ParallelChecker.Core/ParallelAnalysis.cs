@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Threading;
 
 namespace ParallelChecker.Core {
-  public static class ParallelAnalysis {
+  internal static class ParallelAnalysis {
     private const int _RandomSeed = 4711;
 
     public static IEnumerable<Issue> FindIssues(Compilation compilation, CancellationToken cancellationToken, AnalysisOptions options, out bool faulted) {
