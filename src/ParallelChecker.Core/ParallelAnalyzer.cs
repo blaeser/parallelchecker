@@ -132,7 +132,7 @@ namespace ParallelChecker.Core {
           var title = string.Format(_WarningFormat, number, issue.Message);
           var helpLink = _GeneralHelpLink;
           _helpLinks.TryGetValue(issue.Category, out helpLink);
-          var diagnostic = Diagnostic.Create(_diagnosticWarning.Id, _diagnosticWarning.Category, title, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.IsEnabledByDefault, 3, title, issue.Description, helpLink, location, issue.Causes.Select(x => x.Location), null, null);
+          var diagnostic = Diagnostic.Create(_diagnosticWarning.Id, _diagnosticWarning.Category, title, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.IsEnabledByDefault, 3, title, issue.Description, helpLink, location, null, null, null);
           report(diagnostic);
         }
       }
