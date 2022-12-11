@@ -1,8 +1,10 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using ParallelChecker.Core.General;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 
@@ -48,7 +50,12 @@ namespace ParallelChecker.Core {
       context.RegisterSemanticModelAction(SemanticModelAction);
     }
 
-    private static readonly Dictionary<string, HashSet<string>> _cache = new();
+    private class CacheEntry {
+      public HashSet<string> Files { get; } = new();
+      public Collection<Issue> Issues { get; } = new();
+    }
+
+    private static readonly Dictionary<string, CacheEntry> _cache = new();
 
     private void SemanticModelAction(SemanticModelAnalysisContext context) {
       var assembly = context.SemanticModel.Compilation.Assembly.Name;
@@ -56,40 +63,51 @@ namespace ParallelChecker.Core {
       var reset = false;
       lock (_cache) {
         if (!_cache.ContainsKey(assembly)) {
-          _cache[assembly] = new HashSet<string>();
+          _cache[assembly] = new();
           reset = true;
         }
-        var set = _cache[assembly];
+        var set = _cache[assembly].Files;
         if (set.Contains(file)) {
           set.Clear();
           reset = true;
         }
         set.Add(file);
       }
-      if (!reset) {
-        return;
-      }
       var location = context.SemanticModel.SyntaxTree.GetRoot().GetLocation();
       var watch = Stopwatch.StartNew();
-      try {
-        var semanticModel = context.SemanticModel;
-        var result = ParallelAnalysis.FindIssues(semanticModel.Compilation, context.CancellationToken, _options, out bool faulted);
-        ReportIssues(context.ReportDiagnostic, result);
+      if (reset) {
+        try {
+          var semanticModel = context.SemanticModel;
+          var result = ParallelAnalysis.FindIssues(semanticModel.Compilation, context.CancellationToken, _options, out bool faulted);
+          lock (_cache) {
+            _cache[assembly].Issues.Clear();
+            _cache[assembly].Issues.AddAll(result);
+          }
+          ReportIssues(context.ReportDiagnostic, result);
 #if DEBUG
-        ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
-#else
-        if (faulted) {
           ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
+#else
+          if (faulted) {
+            ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
+          }
+#endif
+        } catch (OperationCanceledException) {
+          lock (_cache) {
+            _cache.Remove(assembly);
+          }
+#if DEBUG
+          ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, $"Cancelled");
+#endif
+        } catch (Exception exception) {
+          ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);
+        }
+      } else {
+#if DEBUG
+        lock (_cache) {
+          ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, $"Cached {_cache[assembly].Issues}");
         }
 #endif
-      } catch (OperationCanceledException) {
-        lock (_cache) {
-          if (_cache.TryGetValue(assembly, out var set)) {
-            set.Clear();
-          }
-        }
-      } catch (Exception exception) {
-        ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);
+        ReportIssues(context.ReportDiagnostic, _cache[assembly].Issues);
       }
     }
     
