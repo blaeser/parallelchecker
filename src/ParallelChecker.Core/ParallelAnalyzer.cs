@@ -73,7 +73,8 @@ namespace ParallelChecker.Core {
         }
         set.Add(file);
       }
-      var location = context.SemanticModel.SyntaxTree.GetRoot().GetLocation();
+      var tree = context.SemanticModel.SyntaxTree;
+      var location = tree.GetRoot().GetLocation();
       var watch = Stopwatch.StartNew();
       if (reset) {
         try {
@@ -83,7 +84,7 @@ namespace ParallelChecker.Core {
             _cache[assembly].Issues.Clear();
             _cache[assembly].Issues.AddAll(result);
           }
-          ReportIssues(context.ReportDiagnostic, result);
+          ReportIssues(context.ReportDiagnostic, tree, result);
 #if DEBUG
           ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
 #else
@@ -107,7 +108,7 @@ namespace ParallelChecker.Core {
           ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, $"Cached {_cache[assembly].Issues}");
         }
 #endif
-        ReportIssues(context.ReportDiagnostic, _cache[assembly].Issues);
+        ReportIssues(context.ReportDiagnostic, tree, _cache[assembly].Issues);
       }
     }
     
@@ -116,21 +117,24 @@ namespace ParallelChecker.Core {
       report(diagnostic);
     }
 
-    private void ReportIssues(Action<Diagnostic> report, IEnumerable<Issue> issueList) {
+    private void ReportIssues(Action<Diagnostic> report, SyntaxTree tree, IEnumerable<Issue> issueList) {
       int number = 0;
       foreach (var issue in issueList) {
-        ReportIssue(report, number, issue);
+        ReportIssue(report, tree, number, issue);
         number++;
       }
     }
 
-    private static void ReportIssue(Action<Diagnostic> report, int number, Issue issue) {
+    private static void ReportIssue(Action<Diagnostic> report, SyntaxTree tree, int number, Issue issue) {
       foreach (var cause in new HashSet<Cause>(issue.Causes)) {
-        var title = string.Format(_WarningFormat, number, issue.Message);
-        var helpLink = _GeneralHelpLink;
-        _helpLinks.TryGetValue(issue.Category, out helpLink);
-        var diagnostic = Diagnostic.Create(_diagnosticWarning.Id, _diagnosticWarning.Category, title, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.IsEnabledByDefault, 3, title, issue.Description, helpLink, cause.Location, issue.Causes.Select(x => x.Location), null, null);
-        report(diagnostic);
+        if (tree != null && tree.FilePath == cause.Location.SourceTree?.FilePath) {
+          var location = Location.Create(tree, cause.Location.SourceSpan);
+          var title = string.Format(_WarningFormat, number, issue.Message);
+          var helpLink = _GeneralHelpLink;
+          _helpLinks.TryGetValue(issue.Category, out helpLink);
+          var diagnostic = Diagnostic.Create(_diagnosticWarning.Id, _diagnosticWarning.Category, title, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.DefaultSeverity, _diagnosticWarning.IsEnabledByDefault, 3, title, issue.Description, helpLink, location, issue.Causes.Select(x => x.Location), null, null);
+          report(diagnostic);
+        }
       }
     }
   }
