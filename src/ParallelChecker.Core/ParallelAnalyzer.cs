@@ -83,7 +83,9 @@ namespace ParallelChecker.Core {
         }
 #endif
       } catch (Exception exception) {
-        ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);
+        if (exception is not OperationCanceledException) {
+          ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);
+        }
       }
     }
     
