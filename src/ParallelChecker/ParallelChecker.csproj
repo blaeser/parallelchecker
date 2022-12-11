@@ -53,6 +53,16 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix $(VSSDKTargetPlatformRegRootSuffix)</StartArguments>
+    <Description>Parallel Checker for C#</Description>
+    <Copyright>Copyright © 2017-2022 Prof. Dr. Luc Bläser, OST - Ostschweizer Fachhochschule, Switzerland</Copyright>
+    <PackageProjectUrl>https://github.com/blaeser/parallelchecker</PackageProjectUrl>
+    <Version>2.7.0.0</Version>
+    <Title>Parallel Checker for C#</Title>
+    <Company>OST - Ostschweizer Fachhochschule, Switzerland"</Company>
+    <Product>Parallel Checker</Product>
+    <RepositoryUrl>https://github.com/blaeser/parallelchecker</RepositoryUrl>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
@@ -61,6 +71,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ParallelChecker.Core\ParallelChecker.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="license.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

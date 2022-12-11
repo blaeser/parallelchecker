@@ -2,6 +2,9 @@
 
 The **Parallel Checker** is a static analyzer for Visual Studio® and VS Code that detects data races, deadlocks, and other concurrency issues in C#.
 
+## Version 2.7.0 Released
+The latest Parallel Checker release 2.7.0 provides compatbility with the latest Visual Studio® 2022 versions 17.4.2 onwards. The update is available on Visual Studio® Marketplace.
+
 ## Highlights
 
 * **Static**: Finds issues that are hard to identify through tests.
@@ -11,20 +14,20 @@ The **Parallel Checker** is a static analyzer for Visual Studio® and VS Code th
 
 ## Installation
 
-**Total Downloads/Installs: >7,000** (July 2022)
+**Total Downloads/Installs: >10,000** (December 2022)
 
 More details can found under [installation instructions](doc/Installation.md).
 
 ### Visual Studio® Extension
 You can find the Parallel Checker as a Visual Studio® extension in the Visual Studio® Marketplace:
 
-* [Parallel Checker Extension for Visual Studio® 2022](https://marketplace.visualstudio.com/items?itemName=LBHSR.ParallelChecker) (most recent release, >1,000 installs).
-* [Parallel Checker Extension for Visual Studio® 2019](https://marketplace.visualstudio.com/items?itemName=LBHSR.HSRParallelCheckerforC7VS2017) (previous version, >2,700 installs).
+* [Parallel Checker Extension for Visual Studio® 2022](https://marketplace.visualstudio.com/items?itemName=LBHSR.ParallelChecker) (most recent release, >1,500 installs).
+* [Parallel Checker Extension for Visual Studio® 2019](https://marketplace.visualstudio.com/items?itemName=LBHSR.HSRParallelCheckerforC7VS2017) (previous version, >2,800 installs).
 
 ### NuGet Package (for e.g. VS Code)
 To use the Parallel Checker in VS Code, you need to integrate its NuGet analyzer package in your C# project. 
 
-* [Parallel Checker NuGet Package](https://www.nuget.org/packages/ConcurrencyLab.ParallelChecker/) (>3,300 downloads) 
+* [Parallel Checker NuGet Package](https://www.nuget.org/packages/ConcurrencyLab.ParallelChecker/) (>6,000 downloads) 
 
 ## Concurrency Issues
 
