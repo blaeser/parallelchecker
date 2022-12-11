@@ -57,26 +57,27 @@ File `BankTest.cs`:
 
 ## Checker Output (2 Issues, 4 Locations)
 
-    Issue: #0 Data race on BankTest.BankAccount.Balance
-        caused by write at "Balance += amount" in BankAccount.cs line 11
-            caused by call Deposit at "account.Deposit(100)" in BankTest.cs line 13
-                caused by thread or task at "() => { account.Deposit(100); }" in BankTest.cs line 11
-                    caused by call BankTest.BankTest.Main()
-                        caused by initial thread at "Main" in BankTest.cs line 8
-        caused by read at "account.Balance" in BankTest.cs line 22
-            caused by call BankTest.BankTest.Main()
-                caused by initial thread at "Main" in BankTest.cs line 8
-
-
-    Issue: #1 Data race on BankTest.BankAccount.Balance
+    Issue: #0 Data race on BankTest.BankAccount.Balance	BankTest	C:\Daten\GitHub\parallelchecker\doc\samples\1_BankTest\BankTest\BankAccount.cs	21	Active	Data race on BankTest.BankAccount.Balance
         caused by write at "Balance -= amount" in BankAccount.cs line 21
-            caused by call Withdraw at "account.Withdraw(50)" in BankTest.cs line 17
-                caused by thread or task at "() => { var result = account.Withdraw..." in BankTest.cs line 15
-                    caused by call BankTest.BankTest.Main()
-                        caused by initial thread at "Main" in BankTest.cs line 8
-        caused by read at "account.Balance" in BankTest.cs line 22
-            caused by call BankTest.BankTest.Main()
+            caused by call Withdraw at "account.Withdraw(50)" in BankTest.cs line 18
+            caused by thread or task at "() => { var result = account.Withdraw..." in BankTest.cs line 16
+                caused by call BankTest.BankTest.Main()
                 caused by initial thread at "Main" in BankTest.cs line 8
+        caused by read at "account.Balance" in BankTest.cs line 23
+            caused by call BankTest.BankTest.Main()
+            caused by initial thread at "Main" in BankTest.cs line 8
+
+
+    Issue: #1 Data race on BankTest.BankAccount.Balance	BankTest	C:\Daten\GitHub\parallelchecker\doc\samples\1_BankTest\BankTest\BankTest.cs	23	Active	Data race on BankTest.BankAccount.Balance
+        caused by write at "Balance += amount" in BankAccount.cs line 11
+            caused by call Deposit at "account.Deposit(100)" in BankTest.cs line 14
+            caused by thread or task at "() => { account.Deposit(100); }" in BankTest.cs line 12
+                caused by call BankTest.BankTest.Main()
+                caused by initial thread at "Main" in BankTest.cs line 8
+        caused by read at "account.Balance" in BankTest.cs line 23
+            caused by call BankTest.BankTest.Main()
+            caused by initial thread at "Main" in BankTest.cs line 8
+
 
 ## Problem Fixing (2 Options)
 

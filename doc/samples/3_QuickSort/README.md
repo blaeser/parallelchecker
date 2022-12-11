@@ -21,9 +21,7 @@ File `QuickSort.cs`:
             while (array[upper] > pivot) upper--; 
             if (lower <= upper) 
             { 
-                var temp = array[lower]; 
-                array[lower] = array[upper]; 
-                array[upper] = temp; 
+                (array[upper], array[lower]) = (array[lower], array[upper]);
                 lower++; 
                 upper--; 
             }
@@ -42,23 +40,32 @@ File `QuickSort.cs`:
 
 ## Checker Output (Various Issues and Locations)
 
-    Issue: #0 Data race on array
-        caused by write at "array[lower] = array[upper]" in QuickSort.cs line 24
-            caused by call Sort at "Sort(array, upper, right)" in QuickSort.cs line 36
-                caused by thread or task at "() => { if (lower < right) Sort(array..." in QuickSort.cs line 34
-                    caused by call Sort at "Sort(array, 0, array.Length - 1)" in QuickSort.cs line 9
-                        caused by call Sort at "QuickSort.Sort(array)" in Program.cs line 10
-                            caused by call QuickSort.Program.Main()
-                                caused by initial thread at "Main" in Program.cs line 7
+    Issue: #0 Data race on array	QuickSort	C:\Daten\GitHub\parallelchecker\doc\samples\3_QuickSort\QuickSort\QuickSort.cs	20	Active	Data race on array
         caused by read at "array[upper]" in QuickSort.cs line 20
-            caused by call Sort at "Sort(array, left, lower)" in QuickSort.cs line 32
-                caused by thread or task at "() => { if (left < upper) Sort(array..." in QuickSort.cs line 30
-                    caused by call Sort at "Sort(array, 0, array.Length - 1)" in QuickSort.cs line 9
-                        caused by call Sort at "QuickSort.Sort(array)" in Program.cs line 10
-                            caused by call QuickSort.Program.Main()
-                                caused by initial thread at "Main" in Program.cs line 7
+            caused by call Sort at "Sort(array, left, lower)" in QuickSort.cs line 30
+            caused by thread or task at "() => { if (left < upper) Sort(array..." in QuickSort.cs line 28
+                caused by call Sort at "Sort(array, upper, right)" in QuickSort.cs line 34
+                caused by thread or task at "() => { if (lower < right) Sort(array..." in QuickSort.cs line 32
+                    caused by call Sort at "Sort(array, left, lower)" in QuickSort.cs line 30
+                    caused by thread or task at "() => { if (left < upper) Sort(array..." in QuickSort.cs line 28
+                        caused by call Sort at "Sort(array, 0, array.Length - 1)" in QuickSort.cs line 9
+                        caused by call QuickSort.QuickSort.Sort(int[])
+                            caused by potential subsequent call
+                            caused by initial thread at "Sort" in QuickSort.cs line 7
+        caused by write at "(array[upper], array[lower])" in QuickSort.cs line 23
+            caused by call Sort at "Sort(array, upper, right)" in QuickSort.cs line 34
+            caused by thread or task at "() => { if (lower < right) Sort(array..." in QuickSort.cs line 32
+                caused by call Sort at "Sort(array, upper, right)" in QuickSort.cs line 34
+                caused by thread or task at "() => { if (lower < right) Sort(array..." in QuickSort.cs line 32
+                    caused by call Sort at "Sort(array, left, lower)" in QuickSort.cs line 30
+                    caused by thread or task at "() => { if (left < upper) Sort(array..." in QuickSort.cs line 28
+                        caused by call Sort at "Sort(array, 0, array.Length - 1)" in QuickSort.cs line 9
+                        caused by call QuickSort.QuickSort.Sort(int[])
+                            caused by potential subsequent call
+                            caused by initial thread at "Sort" in QuickSort.cs line 7
+
     
-    … (various more issues, e.g. 8 more)
+    … (various more issues, e.g. 5 more)
 
 ## Problem Fixing
 

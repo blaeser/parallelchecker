@@ -20,9 +20,7 @@ namespace QuickSort
                 while (array[upper] > pivot) upper--;
                 if (lower <= upper)
                 {
-                    var temp = array[lower];
-                    array[lower] = array[upper];
-                    array[upper] = temp;
+                    (array[upper], array[lower]) = (array[lower], array[upper]);
                     lower++;
                     upper--;
                 }

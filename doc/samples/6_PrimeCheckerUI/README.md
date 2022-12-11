@@ -1,5 +1,7 @@
 # Prime Checker UI Sample
 
+**NOTE**: The solution needs to be build to display the checker messages (due to generated WPF code that is needed by the analysis).
+
 ## Issue Description (Data Races, async/await)
 * A first UI click event occurs and starts the TPL task for the long computation.
 * During the await, a second UI click event may occur and be dispatched.

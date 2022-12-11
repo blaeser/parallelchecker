@@ -22,10 +22,7 @@ namespace DoubleCheckedLocking
                 {
                     lock (locker)
                     {
-                        if (instance == null)
-                        {
-                            instance = new Singleton();
-                        }
+                        instance ??= new Singleton();
                     }
                 }
                 return instance;

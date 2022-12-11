@@ -8,6 +8,7 @@ namespace BankTest
         public static void Main()
         {
             var account = new BankAccount();
+            account.Deposit(50);
             var t1 = new Thread(() => 
             {
                 account.Deposit(100);
