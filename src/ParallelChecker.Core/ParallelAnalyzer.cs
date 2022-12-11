@@ -82,10 +82,14 @@ namespace ParallelChecker.Core {
           ReportInfo(context.ReportDiagnostic, location, watch, result.Count().ToString(), faulted ? _FaultSign : string.Empty);
         }
 #endif
-      } catch (Exception exception) {
-        if (exception is not OperationCanceledException) {
-          ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);
+      } catch (OperationCanceledException) {
+        lock (_cache) {
+          if (_cache.TryGetValue(assembly, out var set)) {
+            set.Clear();
+          }
         }
+      } catch (Exception exception) {
+        ReportInfo(context.ReportDiagnostic, location, watch, _NoneSign, exception.Message);
       }
     }
     
